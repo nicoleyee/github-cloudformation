@@ -1,12 +1,16 @@
 name: 'Deploy to AWS CloudFormation'
 
 on: 
-  # push:
-  #   branches: [ master ]
-  # pull_request:
-  #   branches: [ master ]
+  # Automatic trigger on push events to the main branch
+  push:
+    branches:
+      - main
 
-  # Allows you to run this workflow manually from the Actions tab
+  # Automatic trigger on pull request events targeting the main branch
+  pull_request:
+    branches:
+      - main
+      
   workflow_dispatch:
     inputs:
       region:
