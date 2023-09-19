@@ -10,7 +10,7 @@ on:
   pull_request:
     branches:
       - main
-      
+
   workflow_dispatch:
     inputs:
       region:
@@ -32,11 +32,12 @@ jobs:
 
       # Configure AWS Credential
       - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v1
+        uses: aws-actions/configure-aws-credentials@v2
         with:
-          aws-access-key-id: ${{ secrets.ACCESS_KEY }}
-          aws-secret-access-key: ${{ secrets.ACCESS_KEY_SECRET }}
-          aws-region: ${{ github.event.inputs.region }}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+          aws-region: us-east-1
 
       # Deploy to AWS CloudFormation
       - name: Deploy to AWS CloudFormation
